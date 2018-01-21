@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="scss">
 .q-collapsible-sub-item .relative-position{
   cursor:pointer !important;
   &:hover{
