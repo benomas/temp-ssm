@@ -13,7 +13,10 @@
       </q-btn>
       <q-toolbar-title>
         Prototipo
-      </q-toolbar-title>
+      </q-toolbar-title>    
+      <q-btn flat>
+        <q-icon name="account_box" />
+      </q-btn>
     </q-toolbar>
 
     <!-- Left Side Panel-->
@@ -38,6 +41,13 @@
       ...
     </q-toolbar>
     -->
+    <q-modal
+      @open="notify('open')"
+      @escape-key="notify('escape-key')"
+      @close="notify('close')"
+    >
+      ...
+    </q-modal>
   </q-layout>
 </template>
 
@@ -46,6 +56,7 @@
 import {
   QBtn,
   QIcon,
+  QModal,
   QItemMain,
   QItemSide,
   QLayout,
@@ -58,6 +69,7 @@ import {
 export default {
   name:"skeleton",
   components: {
+  QModal,
     QCollapsible ,
     QBtn,
     QLayout,

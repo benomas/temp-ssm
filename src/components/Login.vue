@@ -1,30 +1,20 @@
 <template>
   <!-- Configure "view" prop for QLayout -->
   <q-layout>
-    <q-toolbar slot="header">
-      <!-- opens drawer below
-      <button class="hide-on-drawer-visible" @click="$refs.drawer.open()">
-        <i>menu</i>
-      </button>
-      -->
-      <q-toolbar-title>
-        Title
-      </q-toolbar-title>
-    </q-toolbar>
     <div class="content-center">
     	<div class="row  items-center">  
     		<div class="col-4"></div>
 	    	<div class="col-4 justify-center">
 			  	<q-input 
-			  		v-model="username"
+			  		v-model="loginData.username"
 			  		float-label="Nombre de usuario o correo electronico" 
 			  	/>
 			  	<q-input 
-			  		v-model="password" 
+			  		v-model="loginData.password" 
 			  		type="password"
 			  		float-label="Contraseña" 
 			  	/>
-			  	<q-btn class="primary" icon="person" big>Login</q-btn>
+			  	<q-btn class="primary" icon="person" big v-on:click="services.general.login(loginData.username,loginData.password)">Login</q-btn>
 			</div>
     		<div class="col-4"></div>
 		</div>
@@ -45,8 +35,10 @@ import {
   QToolbarTitle,
   QCollapsible ,
 } from 'quasar'
+import BaseCrud from './resources/crud/BaseCrud.vue'
 
 export default {
+  extends: BaseCrud,
   name:"login",
   components: {
 	QInput ,
@@ -60,12 +52,17 @@ export default {
 	QToolbarTitle,
 	QCollapsible ,
   },
-  data () {
-    return {
-    	username:"",
-    	password:""
-    }
-  }
+  data:function(){
+      return {
+          singularResource:"user",
+          pluralResource  :"users",
+          loginData       :{username:null,password:null},
+          user            :{},
+          users           :[]
+      }
+  },
+  mounted:function(){
+  },
 }
 </script>
 

@@ -15,6 +15,9 @@ import Quasar from 'quasar'
 import router from './router'
 import general from './services/generalService'
 import user from './services/user'
+import role from './services/role'
+import permission from './services/permission'
+import passport from './authenticator/passport'
 import resources from 'resources'
 
 Vue.config.productionTip = false
@@ -22,13 +25,20 @@ Vue.use(Quasar) // Install Quasar Framework
 
 //include methods that then will be available in every component
 Vue.mixin({
+  data:function(){
+    return {
+      services:{
+        general,
+        user,
+        role,
+        permission
+      },
+      passport,
+      resources:resources
+    }
+  },
   methods: {
   },
-  data:function(){
-  	 return {
-  	 	resources:resources
-  	 }
-  }
 });
 
 if (__THEME === 'mat') {
@@ -38,6 +48,21 @@ import 'quasar-extras/material-icons'
 // import 'quasar-extras/ionicons'
 // import 'quasar-extras/fontawesome'
 // import 'quasar-extras/animate'
+
+router.beforeEach(function (to, from, next) {
+  if(passport.autenticated()){
+    if(to.path!=='/login')
+      next();
+    else
+      next('/');
+  }
+  else{
+    if(to.path!=='/login')
+      next('/login');
+    else
+      next();
+  }
+});
 
 Quasar.start(() => {
   /* eslint-disable no-new */

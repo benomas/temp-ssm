@@ -1,10 +1,10 @@
 import authenticator from '../authenticator/passport'
 var axios = require('axios');
 var defaultConfig={
-  baseURL            : 'http://dev.josema-v2:705/',
+  baseURL            : 'http://localhost:705/solar-api/public',
   headers            : {
     'X-Requested-With'           : 'XMLHttpRequest',
-    'Content-Type'               : 'application/json',
+    'Content-Type'               : 'application/json'
   },
   timeout            : 15000,
   responseType       : 'json',

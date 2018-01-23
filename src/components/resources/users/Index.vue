@@ -1,6 +1,7 @@
 <template>
   <div>
   	{{currentAction.label}}
+  	{{rows}}
   </div>
 </template>
 
@@ -9,9 +10,12 @@ import indexComponent from '../crud/Index.vue';
 export default {
   extends: indexComponent,
   data () {
-    return {}
+    return {
+    	rows:null
+    }
   },
   mounted:function(){
+	this.services.user.index((response)=>{ this.rows = response.data });
   }
 }
 </script>

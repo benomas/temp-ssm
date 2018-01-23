@@ -1,15 +1,82 @@
 <script>
-export default {
-  data () {
-    return {
+    let defaultSuccess=function(response){
+        this[this.singularResource]=response.data;
     }
-  },
-  props:[
-    "resource",
-    "action"
-  ],
-}
+    let defaulterror=function(response){
+        this[this.singularResource]=response.data;
+    }
+    let defaultParams=function(response){
+        this[this.singularResource]=response.data;
+    }
+    export default{
+        data:function(){
+            return {
+                singularResource:"defaultCrud",
+                pluralResource:"defaultCruds",
+            }
+        },
+        computed:{
+            current:function(){
+                return this[this.singularResource];
+            },
+            currents:function(){
+                return this[this.pluralResource];
+            }
+        },
+        methods:{
+            showSuccess:defaultSuccess,
+            showError:defaulterror,
+            showParams:defaultParams,
+            show:function(id){
+                this.services[this.singularResource].show(
+                    id,
+                    this.showSuccess,
+                    this.showError,
+                    this.showParams()
+                )
+            },
+            indexSuccess:function(response){
+                this[this.pluralResource]=response.data;
+            },
+            indexError:defaulterror,
+            indexParams:defaultParams,
+            index:function(){
+                this.services[this.singularResource].index(
+                    this.indexSuccess,
+                    this.indexError,
+                    this.indexParams()
+                )
+            },
+            storeSuccess:defaultSuccess,
+            storeError:defaulterror,
+            storeParams:defaultParams,
+            store:function(){
+                this.services[this.singularResource].store(
+                    this.storeSuccess,
+                    this.storeError,
+                    this.storeParams()
+                )
+            },
+            updateSuccess:defaultSuccess,
+            updateError:defaulterror,
+            updateParams:defaultParams,
+            update:function(params){
+                this.services[this.singularResource].update(
+                    this.updateSuccess,
+                    this.updateError,
+                    this.updateParams()
+                )
+            },
+            deleteSuccess:defaultSuccess,
+            deleteError:defaulterror,
+            deleteParams:defaultParams,
+            delete:function(){
+                this.services[singularResource].delete(
+                    this.deleteSuccess,
+                    this.deleteError,
+                    this.deleteParams()
+                )
+            }
+        }   
+    }
 </script>
-
-<style>
-</style>

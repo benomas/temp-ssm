@@ -1,11 +1,11 @@
 import services from './services'
 let general={
-    login:(user,password)=>{
+    login:(username,password)=>{
         services.post("oauth/token",{
             "client_id":"2",
-            "client_secret":"VO50RCnYqJUsUdGjRRc5oZwTVgvuCSRll4k5jeZh",
+            "client_secret":"devdevdevdevdevdevdevdevdevdevdevdevdevd",
             "grant_type":"password",
-            "username":user,   
+            "username":username,   
             "password":password
         }).then(function (response) {
             console.log(response);
