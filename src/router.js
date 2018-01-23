@@ -109,6 +109,7 @@ export default new VueRouter({
       children:loadResoursesRoutes(),
     },
     { path: '/hello', component: load('Hello') },
+    { path: '/login', component: load('Login') },
 
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
