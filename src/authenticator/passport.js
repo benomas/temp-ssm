@@ -1,6 +1,9 @@
 export default function(){
-  this.accessToken  = JSON.parse(localStorage.getItem("accessToken") || 'null');
-  this.refreshToken = JSON.parse(localStorage.getItem("refreshToken") || 'null');
+
+  this.loadTokens = ()=>{
+    this.accessToken  = JSON.parse(localStorage.getItem("accessToken") || 'null');
+    this.refreshToken = JSON.parse(localStorage.getItem("refreshToken") || 'null');
+  };
 
   this.setAccessToken = function(accessToken){
     this.accessToken = typeof accessToken!=="undefined"?"Bearer "+accessToken:null;
@@ -13,6 +16,7 @@ export default function(){
   };
 
   this.autenticated=function(){
+    this.loadTokens();
     return this.accessToken!==null;
   };
 
@@ -33,4 +37,5 @@ export default function(){
         this.setRefreshToken(null)
     }
   };
+  this.loadTokens();
 };

@@ -33,7 +33,7 @@ export default function(router){
     this.authenticator.reactToResponse(error);
     switch(error.response.status){
       case 401:
-        this.router.push({name:'login'});
+        this.router.VueRouter.push('login');
         break;
       case 409:
         location.reload(); 

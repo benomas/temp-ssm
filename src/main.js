@@ -16,7 +16,6 @@ import router from './router'
 import services from './services/services'
 import general from './services/generalService'
 import user from './services/user'
-import passport from './authenticator/passport'
 import resources from 'resources'
 
 Vue.config.productionTip = false
@@ -37,7 +36,6 @@ Vue.mixin({
   data:function(){
     return {
       services:servicesInstance,
-      passport,
       resources:resources
     }
   },

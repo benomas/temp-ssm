@@ -8,9 +8,10 @@ export default function(services){
             "grant_type":"password",
             "username":username,   
             "password":password
-        }).then(function (response) {
+        }).then( (response)=>{
+            this.services.router.VueRouter.push('/');
             console.log(response);
-        }).catch(function (error) {
+        }).catch( (error)=>{
             console.log(error);
         });
     }

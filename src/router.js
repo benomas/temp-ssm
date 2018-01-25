@@ -140,13 +140,15 @@ export default function(){
   };
 
   this.loadPassportRules = (servicesInstance)=>{
+
     if(typeof servicesInstance!=="undefined")
       this.linkServices(servicesInstance);
-    if(typeof this.servicesInstance==="undefined" || typeof this.VueRouter==="undefined")
+    if(typeof  this.VueRouter.servicesInstance==="undefined" || typeof this.VueRouter==="undefined")
       return false;
 
     this.VueRouter.beforeEach((to, from, next)=>{
-      if(this.servicesInstance.authenticator.autenticated()){
+      console.log(this.VueRouter.servicesInstance.authenticator.autenticated());
+      if(this.VueRouter.servicesInstance.authenticator.autenticated()){
         if(to.path!=='/login')
           next();
         else
@@ -159,6 +161,7 @@ export default function(){
           next();
       }
     });
+
   };
 
 };
