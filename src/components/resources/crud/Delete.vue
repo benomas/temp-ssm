@@ -37,7 +37,8 @@ export default {
     },
     deleteError:function(response){
       this.ready=true;
-      alert("error");
+      if(this.serviceError(response))
+          alert("error");
     },
     deleteParams:function(){
       return null;

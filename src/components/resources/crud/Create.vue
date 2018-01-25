@@ -37,7 +37,8 @@ export default {
     },
     storeError:function(response){
       this.ready=true;
-      alert("error");
+      if(this.serviceError(response))
+          alert("error");
     },
     storeParams:function(){
       return null;

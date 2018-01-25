@@ -24,6 +24,11 @@
           return false;
         if(typeof this.services[this.resource.resource] === "undefined")
           this.services.pushStaticCrudServices(this.resource.resource);
+      },
+      serviceError(response){
+      	if(typeof response==="undefined")
+      		return false;
+	    return typeof response.response==="undefined" || typeof response.response.status==="undefined" || response.response.status!==401;
       }
     },
     props:[

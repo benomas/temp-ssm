@@ -38,7 +38,8 @@ export default {
     },
     indexError:function(response){
       this.ready=true;
-      alert("error");
+      if(this.serviceError(response))
+          alert("error");
     },
     indexParams:function(){
       return null;

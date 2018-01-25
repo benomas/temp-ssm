@@ -40,6 +40,7 @@ export default function(router){
         break;
       default:return Promise.reject(error);
     }
+    return Promise.reject(error);
   });
 
   this.pushStaticCrudServices=(resource)=>{
