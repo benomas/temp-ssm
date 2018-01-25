@@ -4,7 +4,7 @@ import crudService from './crudService'
 export default function(router){
   var axios = require('axios');
   this.defaultConfig = {
-    baseURL            : 'http://localhost/solar-api/public',
+    baseURL            : 'http://localhost:705/solar-api/public',
     headers            : {
       'X-Requested-With'           : 'XMLHttpRequest',
       'Content-Type'               : 'application/json'
