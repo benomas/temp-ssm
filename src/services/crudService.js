@@ -1,11 +1,22 @@
-import services from './services'
+export default function(services,resource){
+  this.services =services;
+  this.resource = resource;
+  this.show=(id,successCallBack,ErrorCallBack,params,url)=>{
+        this.services.axios.get(
+            url || "api/"+this.resource+"/"+id,
+            params|| {}
+        ).then(function (response) {
+            if(typeof successCallBack ==="function")
+                successCallBack(response);
+        }).catch(function (error) {
+            if(typeof ErrorCallBack ==="function")
+                ErrorCallBack(error);
+        });
+    };
 
-let crudService=function(resourse){
-  let newCrudService={};
-  newCrudService[resourse]={
-    show:(id,successCallBack,ErrorCallBack,params,url)=>{
-        services.get(
-            url || "api/"+resourse+"/"+id,
+    this.index=(successCallBack,ErrorCallBack,params,url)=>{
+        this.services.axios.get(
+            url || "api/"+this.resource,
             params|| {}
         ).then(function (response) {
             if(typeof successCallBack ==="function")
@@ -14,10 +25,11 @@ let crudService=function(resourse){
             if(typeof ErrorCallBack ==="function")
                 ErrorCallBack(error);
         });
-    },
-    index:(successCallBack,ErrorCallBack,params,url)=>{
-        services.get(
-            url || "api/"+resourse,
+    };
+
+    this.store=(successCallBack,ErrorCallBack,params,url)=>{
+        this.services.axios.post(
+            url || "api/"+this.resource,
             params|| {}
         ).then(function (response) {
             if(typeof successCallBack ==="function")
@@ -26,10 +38,11 @@ let crudService=function(resourse){
             if(typeof ErrorCallBack ==="function")
                 ErrorCallBack(error);
         });
-    },
-    store:(successCallBack,ErrorCallBack,params,url)=>{
-        services.post(
-            url || "api/"+resourse,
+    };
+
+    this.update=(id,successCallBack,ErrorCallBack,params,url)=>{
+        this.services.axios.put(
+            url || "api/"+this.resource+"/"+id,
             params|| {}
         ).then(function (response) {
             if(typeof successCallBack ==="function")
@@ -38,22 +51,11 @@ let crudService=function(resourse){
             if(typeof ErrorCallBack ==="function")
                 ErrorCallBack(error);
         });
-    },
-    update:(id,successCallBack,ErrorCallBack,params,url)=>{
-        services.put(
-            url || "api/"+resourse+"/"+id,
-            params|| {}
-        ).then(function (response) {
-            if(typeof successCallBack ==="function")
-                successCallBack(response);
-        }).catch(function (error) {
-            if(typeof ErrorCallBack ==="function")
-                ErrorCallBack(error);
-        });
-    },
-    delete:(id,successCallBack,ErrorCallBack,params,url)=>{
-        services.delete(
-            url || "api/"+resourse+"/"+id,
+    };
+
+    this.delete=(id,successCallBack,ErrorCallBack,params,url)=>{
+        this.services.axios.delete(
+            url || "api/"+this.resource+"/"+id,
             params|| {}
         ).then(function (response) {
             if(typeof successCallBack ==="function")
@@ -63,8 +65,4 @@ let crudService=function(resourse){
                 ErrorCallBack(error);
         });
     }
-  }
-  return newCrudService[resourse];
-}
-
-export default crudService;
+};

@@ -24,16 +24,16 @@
 
 <script>
 import {
-  QInput,
   QBtn,
+  QCollapsible,
   QIcon,
+  QInput,
   QItemMain,
   QItemSide,
   QLayout,
   QSideLink,
   QToolbar,
   QToolbarTitle,
-  QCollapsible ,
 } from 'quasar'
 import BaseCrud from './resources/crud/BaseCrud.vue'
 
@@ -41,16 +41,16 @@ export default {
   extends: BaseCrud,
   name:"login",
   components: {
-	QInput ,
-	QBtn,
-	QIcon,
-	QItemMain,
-	QItemSide,
-	QLayout,
-	QSideLink,
-	QToolbar,
-	QToolbarTitle,
-	QCollapsible ,
+    QBtn,
+    QCollapsible,
+    QIcon,
+    QInput,
+    QItemMain,
+    QItemSide,
+    QLayout,
+    QSideLink,
+    QToolbar,
+    QToolbarTitle,
   },
   data:function(){
       return {
@@ -62,6 +62,7 @@ export default {
       }
   },
   mounted:function(){
+    console.log(this.services.general.login);
   },
 }
 </script>

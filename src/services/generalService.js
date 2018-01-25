@@ -1,7 +1,8 @@
-import services from './services'
-let general={
-    login:(username,password)=>{
-        services.post("oauth/token",{
+export default function(services){
+    this.services =  services;
+    this.resource = "general";
+    this.login=(username,password)=>{
+        this.services.axios.post("oauth/token",{
             "client_id":"2",
             "client_secret":"devdevdevdevdevdevdevdevdevdevdevdevdevd",
             "grant_type":"password",
@@ -13,5 +14,4 @@ let general={
             console.log(error);
         });
     }
-}
-export default general;
+};
