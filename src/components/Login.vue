@@ -27,13 +27,16 @@ import {
   QBtn,
   QCollapsible,
   QIcon,
+  QInnerLoading,
   QInput,
   QItemMain,
   QItemSide,
   QLayout,
   QSideLink,
+  QSpinnerGears,
   QToolbar,
   QToolbarTitle,
+  QTransition,
 } from 'quasar'
 import BaseCrud from './resources/crud/BaseCrud.vue'
 
@@ -44,13 +47,16 @@ export default {
     QBtn,
     QCollapsible,
     QIcon,
+    QInnerLoading,
     QInput,
     QItemMain,
     QItemSide,
     QLayout,
     QSideLink,
+    QSpinnerGears,
     QToolbar,
     QToolbarTitle,
+    QTransition,
   },
   data:function(){
       return {
@@ -62,7 +68,6 @@ export default {
       }
   },
   mounted:function(){
-    console.log(this.services.general.login);
   },
 }
 </script>

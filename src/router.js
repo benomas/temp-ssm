@@ -147,7 +147,6 @@ export default function(){
       return false;
 
     this.VueRouter.beforeEach((to, from, next)=>{
-      console.log(this.VueRouter.servicesInstance.authenticator.autenticated());
       if(this.VueRouter.servicesInstance.authenticator.autenticated()){
         if(to.path!=='/login')
           next();
